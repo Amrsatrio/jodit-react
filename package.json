@@ -34,6 +34,7 @@
 		"babel-cli": "^6.26.0",
 		"babel-loader": "^9.1.2",
 		"babel-plugin-transform-class-properties": "^6.24.1",
+		"cross-env": "^7.0.3",
 		"css-loader": "^6.8.1",
 		"eslint": "8.43.0",
 		"eslint-config-prettier": "^8.8.0",
@@ -53,9 +54,9 @@
 	"scripts": {
 		"newversion": "npm version patch --no-git-tag-version && npm run github",
 		"lint": "eslint ./",
-		"demo": "cd examples && export NODE_ENV=development && webpack serve --config ./webpack.config.js --mode development",
+		"demo": "cd examples && npx cross-env NODE_ENV=development webpack serve --config ./webpack.config.js --mode development",
 		"start": "npm run demo",
-		"build": "export NODE_ENV=production && webpack --mode production",
+		"build": "npx cross-env NODE_ENV=production webpack --mode production",
 		"github": "npm run git && git push --tags origin HEAD:main",
 		"git": "git add --all  && git commit -m \"New version $npm_package_version. Read more https://github.com/jodit/jodit-react/releases/tag/$npm_package_version \" && git tag $npm_package_version"
 	},
